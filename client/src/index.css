@@ -13,3 +13,18 @@ body {
   padding:0;
   box-sizing: 0;
 }
+@media screen and (max-width: 768px) {
+  body {
+    overflow: hidden;
+    margin: 0; /* Reset the default margin */
+  }
+  html {
+    overflow-x: hidden; /* Hide horizontal scrollbar on the HTML element */
+  }
+  img{
+    margin-left: 0;
+  }
+}
+html {
+  overflow-x: hidden; /* Hide horizontal scrollbar on the HTML element */
+}

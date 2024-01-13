@@ -1,0 +1,12 @@
+
+{
+    "carouselData": [
+      {
+        "title": "Summer Sale",
+        "description": "Explore our latest collection with great discounts!",
+        "imageURL": "../../assets/backgrounds/Bg1.jpg",
+        "link": "https://example.com/summer-sale"
+      },
+
+    ]
+  }
