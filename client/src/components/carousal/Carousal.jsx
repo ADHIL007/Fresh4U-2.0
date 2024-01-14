@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './carousal.css';
 import bgb1 from '../../assets/backgrounds/nathan-dumlao-bRdRUUtbxO0-unsplash.jpg';
 import bgb2 from '../../assets/backgrounds/bgb1.jpg';
 import bgb3 from '../../assets/backgrounds/bgb3.jpeg';
+import Button from '@mui/material/Button';
+import LockIcon from '@mui/icons-material/Lock';
+import store from '../../Redux/store';
+import Login from '../Login/Login';
 
-const Carousal = () => {
+const Carousal = ({LOGIN_STATUS  }) => {
+
   const carouselData = [
     {
       "title": "Fresh Vegetables",
@@ -30,7 +36,7 @@ const Carousal = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Add state for user login status
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,8 +47,7 @@ const Carousal = () => {
   }, [carouselData.length]);
 
   const handleLogin = () => {
-    // You can implement your login logic here
-    // For demonstration purposes, toggle the login state
+
     setIsLoggedIn(!isLoggedIn);
   };
 
@@ -61,13 +66,27 @@ const Carousal = () => {
           </div>
         </div>
       ))}
-      {!isLoggedIn && (
-        <div className="login-button-container">
-          <button onClick={handleLogin}>Login</button>
-        </div>
-      )}
+     {!LOGIN_STATUS && (
+  <div className="login-button-container">
+    {isLoggedIn ? <Login /> : (
+      <Button
+        variant="contained"
+        style={{ backgroundColor: '#4CAF50', color: '#FFFFFF' }}
+        startIcon={<LockIcon />}
+        onClick={handleLogin}
+      >
+        Login
+      </Button>
+    )}
+  </div>
+)}
+
     </div>
   );
+};
+
+Carousal.propTypes = {
+  LOGIN_STATUS: PropTypes.bool.isRequired,
 };
 
 export default Carousal;

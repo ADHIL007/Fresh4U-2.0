@@ -18,12 +18,12 @@ function Cards({ sectionName }) {
 
         <div className='Cards'>
 
-          <ProdCards name="Product 1" desc="Description 1" price="20.99" />
-          <ProdCards name="Product 2" desc="Description 2" price="20.99" />
-          <ProdCards name="Product 3" desc="Description 3" price="20.99" />
-          <ProdCards name="Product 4" desc="Description 4" price="20.99" />
-          <ProdCards name="Product 5" desc="Description 5" price="20.99" />
-          <ProdCards name="Product 6" desc="Description 6" price="20.99" />
+          <ProdCards name="Product 1" desc="Description 1" price={20.99} id="1" />
+          <ProdCards name="Product 2" desc="Description 2" price={20.99} id="2" />
+          <ProdCards name="Product 3" desc="Description 3" price={20.99}  id="3"/>
+          <ProdCards name="Product 4" desc="Description 4" price={20.99}  id="4"/>
+          <ProdCards name="Product 5" desc="Description 5" price={20.99} id="5" />
+          <ProdCards name="Product 6" desc="Description 6" price={20.99}  id="6"/>
         </div>
       </div>
     </div>

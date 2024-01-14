@@ -11,8 +11,10 @@ import SupportAgentRoundedIcon from "@mui/icons-material/SupportAgentRounded";
 import ContactsBar from "./ContactsBar";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import MenuIcon from "@mui/icons-material/Menu";
-
-function Navbar() {
+import PropTypes from 'prop-types';
+import store from "../../Redux/store";
+import Badge from '@mui/material/Badge';
+function Navbar({}) {
   const [iconColor, setIconColor] = useState("#FF0000");
   const [menuClicked, setMenuClicked] = useState(false);
   const [showContactBar, setShowContactBar] = useState(true);
@@ -44,6 +46,7 @@ function Navbar() {
 
     return () => clearInterval(interval);
   }, []);
+
 
   return (
 <div className={showContactBar?"navbar-container":"navbar-container navbar-container-moveUp "}>
@@ -98,13 +101,15 @@ function Navbar() {
           <ul className="nav-links-2">
             <li id="account">
               <a href="/" >
-                <AccountCircleRoundedIcon />
+                <AccountCircleRoundedIcon color={store.getState().loggedIn ? "primary" : "disabled"}/>
                 <span className="account">Account</span>
               </a>
             </li>
             <li id="cart">
               <a href="/">
+                <Badge badgeContent={store.getState().cart.length-1} color="error">
                 <ShoppingCartRoundedIcon />
+                </Badge>
               </a>
             </li>
 
@@ -125,3 +130,8 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
+Navbar.propTypes = {
+  LOGIN_STATUS: PropTypes.bool.isRequired,
+};

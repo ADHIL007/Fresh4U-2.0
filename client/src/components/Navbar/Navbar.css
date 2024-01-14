@@ -41,7 +41,7 @@
   }
 }
 .navbar-container.moveUp {
-  height: 70px;
+  height: 40px;
 }
 
 .moveUp {
@@ -53,7 +53,7 @@
     height: 40px;
     border-radius: 50px;
     border: 2px solid rgba(0, 248, 54, 0.452);
-    background-color: #ffffffdc;
+    background-color: #ffff;
     display: flex;
     align-items: center;
     justify-content: center;
