@@ -1,0 +1,58 @@
+
+
+.signup-container {
+
+  height: auto;
+  width: 100%;
+  position: relative;
+}
+
+.signup-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.signup-checkbox-label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.signup-checkbox-label .MuiCheckbox-root {
+  color: #007bff;
+}
+
+.signup-checkbox-label .Mui-checked {
+  color: #0056b3;
+}
+
+.signup-fields {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.signup-personal,
+.signup-seller {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-personal .MuiTextField-root,
+.signup-seller .MuiTextField-root {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.signup-button {
+  width: 100%;
+  margin-top: 20px;
+}

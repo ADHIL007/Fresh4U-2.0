@@ -24,6 +24,11 @@ function Cards({ sectionName }) {
           <ProdCards name="Product 4" desc="Description 4" price={20.99}  id="4"/>
           <ProdCards name="Product 5" desc="Description 5" price={20.99} id="5" />
           <ProdCards name="Product 6" desc="Description 6" price={20.99}  id="6"/>
+          <ProdCards name="Product 4" desc="Description 4" price={20.99}  id="4"/>
+          <ProdCards name="Product 5" desc="Description 5" price={20.99} id="5" />
+          <ProdCards name="Product 6" desc="Description 6" price={20.99}  id="6"/>  <ProdCards name="Product 4" desc="Description 4" price={20.99}  id="4"/>
+          <ProdCards name="Product 5" desc="Description 5" price={20.99} id="5" />
+          <ProdCards name="Product 6" desc="Description 6" price={20.99}  id="6"/>
         </div>
       </div>
     </div>

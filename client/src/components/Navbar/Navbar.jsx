@@ -11,10 +11,10 @@ import SupportAgentRoundedIcon from "@mui/icons-material/SupportAgentRounded";
 import ContactsBar from "./ContactsBar";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import MenuIcon from "@mui/icons-material/Menu";
-import PropTypes from 'prop-types';
+
 import store from "../../Redux/store";
 import Badge from '@mui/material/Badge';
-function Navbar({}) {
+function Navbar() {
   const [iconColor, setIconColor] = useState("#FF0000");
   const [menuClicked, setMenuClicked] = useState(false);
   const [showContactBar, setShowContactBar] = useState(true);
@@ -93,14 +93,14 @@ function Navbar({}) {
               </li>
               <li id="support">
               <a href="/">
-                <SupportAgentRoundedIcon />{menuClicked ? "Support" : null}
+                <SupportAgentRoundedIcon />Support
               </a>
             </li>
             </ul>
           </div>
           <ul className="nav-links-2">
             <li id="account">
-              <a href="/" >
+            <a href={store.getState().loggedIn ? "/account" : "/"}>
                 <AccountCircleRoundedIcon color={store.getState().loggedIn ? "primary" : "disabled"}/>
                 <span className="account">Account</span>
               </a>
@@ -132,6 +132,3 @@ function Navbar({}) {
 export default Navbar;
 
 
-Navbar.propTypes = {
-  LOGIN_STATUS: PropTypes.bool.isRequired,
-};

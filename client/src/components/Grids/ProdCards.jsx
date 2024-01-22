@@ -1,50 +1,69 @@
-import React, { useState } from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PropTypes from 'prop-types';
-import './Grids.css';
-import tomato from '../../assets/backgrounds/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg';
-import store from '../../Redux/store';
-// Import your actions
+import React, { useState } from "react";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import PropTypes from "prop-types";
+import "./Grids.css";
+import tomato from "../../assets/backgrounds/inigo-de-la-maza-s285sDw5Ikc-unsplash.jpg";
+import store from "../../Redux/store";
 
-function ProdCards({ id,name, desc, price }) {
+
+function ProdCards({ id, name, desc, price }) {
   const [quantity, setQuantity] = useState(0);
 
 
 
-
-
   const incrementQuantity = () => {
-    if (quantity < 20) {
+    if (quantity < 20 ) {
       setQuantity(quantity + 1);
     }
+    if(quantity==0){
+      store.dispatch(
+        {
+          type: "ADD_CART",
+          payload: { id: id, name: name, price: price, quantity: quantity },
+        },
+        () => {
+          console.log(store.getState().cart.length);
+        }
+      );
+    }
+
+
+
   };
 
   const decrementQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 0 ) {
       setQuantity(quantity - 1);
 
     }
-  };
+    if(quantity == 1){
+      store.dispatch({
+        type: "REMOVE_CART",
+        payload: { id: id },
+      }, () => {
+        console.log(store.getState().cart.length);
+      });
+
+  }
+}
 
   const handleAddToCart = () => {
-    store.dispatch({
-      type: "ADD_CART",
-      payload: { id: id, name: name, price: price, quantity: quantity },
-    }, () => {
-      console.log(store.getState().cart.length);
-    });
+
+
+
 
     incrementQuantity();
   };
 
-
   const handleRemoveFromCart = () => {
     setQuantity(0);
-    store.dispatch({ type: "REMOVE_CART", payload: { id: id } }, () => {
-      console.log(store.getState().cart.length);
-    });
-  };
 
+      store.dispatch({ type: "REMOVE_CART", payload: { id: id } }, () => {
+        console.log(store.getState().cart.length);
+      });
+
+
+  };
 
   return (
     <div className="product-card">
@@ -67,12 +86,16 @@ function ProdCards({ id,name, desc, price }) {
         <p className="price">{"$" + price}</p>
 
         {quantity > 0 ? (
-          <button className="add-to-cart-button" style={{ backgroundColor: '#ff1605'}} onClick={handleRemoveFromCart}>
+          <button
+            className="add-to-cart-button"
+            style={{ backgroundColor: "#ff1605" }}
+            onClick={handleRemoveFromCart}
+          >
             Remove from Cart
           </button>
         ) : (
           <button className="add-to-cart-button" onClick={handleAddToCart}>
-            Add to Cart <ShoppingCartIcon />
+            Quick add <ShoppingCartIcon />
           </button>
         )}
       </div>
@@ -81,9 +104,12 @@ function ProdCards({ id,name, desc, price }) {
 }
 
 export default ProdCards;
+
 ProdCards.propTypes = {
   name: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 };
+
+
